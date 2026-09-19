@@ -1,0 +1,35 @@
+{
+  "format": "parcelcontext.pack/v1",
+  "id": "demo-project-handoff",
+  "name": "Project Handoff",
+  "description": "Background needed to pick up the checkout migration in another workspace.",
+  "source": "atlas-web",
+  "createdAt": "2026-09-14T18:00:00.000Z",
+  "reviewedAt": "2026-09-14T18:00:00.000Z",
+  "sections": [
+    {
+      "id": "sec-goal-1",
+      "kind": "goal",
+      "title": "Goal",
+      "content": "Migrate the checkout flow to the new service without breaking the existing API contract."
+    },
+    {
+      "id": "sec-decision-1",
+      "kind": "decision",
+      "title": "Decision",
+      "content": "No breaking changes this quarter. Consumers are mid-migration and cannot absorb a contract change."
+    },
+    {
+      "id": "sec-convention-1",
+      "kind": "convention",
+      "title": "Convention",
+      "content": "Small PRs, tests alongside each change. Anything over ~400 lines gets split."
+    },
+    {
+      "id": "sec-question-1",
+      "kind": "openQuestion",
+      "title": "Open question",
+      "content": "Do we version the payments endpoint, or keep it stable and add a sibling route?"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+node_modules/
+out/
+*.vsix
+*.tsbuildinfo
+
+# never publish: credentials, runtime logs, captured evidence
+demo-evidence/
+*.log
+*.pwd
+*.pfx
+*.pem
+*.key
