@@ -126,25 +126,25 @@ costs one section; a false inclusion can leak a credential into a file you then 
 - Clustering is term-overlap, not semantic. It reliably separates unrelated work; it will
   sometimes split one topic in two, which is what **Merge Packs** is for.
 
-## The 90-second demo
+## Try it end to end
 
-This is the sequence to film. It matches the concept video beat for beat.
+Two workspaces, about ninety seconds:
 
 1. **Workspace A** — `ParcelContext: Save Context Pack`. Name it `Project Handoff`.
    Type a goal, a decision, a convention, an open question.
 2. **The review gate appears** — a multi-select list with everything ticked.
-   Untick one item to show that excluded content never leaves. Confirm.
+   Untick one item: excluded content never leaves. Confirm.
 3. **Export** — click the export icon on the pack. Save `project-handoff.ctxpack`.
    Open it in an editor: it's readable JSON, reviewable in a PR.
-4. **Workspace B** — open a *different* folder. Library is empty.
+4. **Workspace B** — open a *different* folder. The library is empty.
    `ParcelContext: Import Context Pack` → pick the file.
    **The full contents render as Markdown before anything is imported.**
 5. Choose **Import and enable here**.
 6. Open Copilot Chat and ask something like
    *"What should I keep in mind before changing the payments endpoint?"*
-   Reference the tool explicitly with `#contextPacks` if you want it guaranteed on camera.
+   Reference the tool explicitly with `#contextPacks` to force it into the prompt.
 
-`samples/project-handoff.ctxpack` is ready to import if you'd rather skip step 1 during a live demo.
+`samples/project-handoff.ctxpack` is ready to import if you'd rather skip step 1.
 
 ## How Copilot retrieves it
 
@@ -168,28 +168,23 @@ a pack in one workspace does not expose it in another.
 
 Packs live in `globalStorageUri/packs/*.ctxpack` so they travel between workspaces.
 
-## Scope — read this before demoing
+## Limits and privacy
 
-The honest boundary, and the thing to say out loud when a judge asks:
-
-- The scan reads **chat sessions VS Code has already stored on this machine**. It reads
-  them off disk directly, because the Chat Participant API only exposes messages addressed
-  to that participant. That storage layout is internal and may change between releases.
-- Exclusion is **automatic, not delegated to you** — but it is biased towards dropping
-  content, and the scan reports how much it excluded and masked.
+- The scan reads **chat sessions VS Code has already stored on this machine**, off disk
+  directly, because the Chat Participant API only exposes messages addressed to that
+  participant. That storage layout is internal and may change between VS Code releases.
+- Exclusion is **automatic rather than something you have to remember**, biased towards
+  dropping content, and the scan reports how much it excluded and masked.
 - Nothing is imported without a **full preview** first.
-- Import conflicts are resolved by the user: keep existing, use incoming, or keep
-  both. Nothing is overwritten automatically.
+- Import conflicts are yours to resolve: keep existing, use incoming, or keep both.
+  Nothing is overwritten automatically.
 - Exporting a pack grants **no access** to any source system, and a shared file
   **cannot be recalled**. The share command says so in its own confirmation.
-- This is a concept, not a released feature, and not affiliated with or endorsed
-  by any product team.
-
-That last section is not boilerplate. Curated-and-reviewable is the actual design
-position, and it's stronger than claiming total recall.
+- This is a personal project, not a released feature, and not affiliated with or
+  endorsed by any product team.
 
 ## Not built yet
 
-Deliberately out of scope for the hackathon build: pack versioning, signing,
+Deliberately out of scope for this build: pack versioning, signing,
 section-level merge on conflict, and a shared team registry. Each is a real next
 step, none is needed to prove the loop.
